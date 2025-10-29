@@ -15,22 +15,22 @@ ANC=$2
 cd results
 
 # Check to see if both the Evolved and Ancestor vcfs have been created
-if [[ -f "${EVOLVED}.vcf" && -f "${ANC}.vcf" ]]; then
-    (>&2 echo Both ${EVOLVED}.vcf and ${ANC}.vcf found.)
+if [[ -f "${EVOLVED}_sniffles.vcf" && -f "${ANC}_sniffles.vcf" ]]; then
+    (>&2 echo Both ${EVOLVED}_sniffles.vcf and ${ANC}_sniffles.vcf found.)
 else
     (>&2 echo Error: missing one or both VCF files in $(pwd):)
-    if [[ ! -f "${EVOLVED}.vcf" ]]; then
-        (>&2 echo Missing: ${EVOLVED}.vcf)
+    if [[ ! -f "${EVOLVED}_sniffles.vcf" ]]; then
+        (>&2 echo Missing: ${EVOLVED}_sniffles.vcf)
     fi
-    if [[ ! -f "${ANC}.vcf" ]]; then
-        (>&2 echo Missing: ${ANC}.vcf)
+    if [[ ! -f "${ANC}_sniffles.vcf" ]]; then
+        (>&2 echo Missing: ${ANC}_sniffles.vcf)
     fi
     exit 1  # else terminate the script if files are missing
 fi
 
 (>&2 echo ***Bedtools - Intersect***)
 bedtools intersect -v -header \
-    -a ${EVOLVED}.vcf \
-    -b ${ANC}.vcf \
-    > ${EVOLVED}_AncFiltered.vcf
+    -a ${EVOLVED}_sniffles.vcf \
+    -b ${ANC}_sniffles.vcf \
+    > ${EVOLVED}_sniffles_AncFiltered.vcf
 
