@@ -28,7 +28,7 @@ samtools index "$OUT"
 # Use Sniffles2 for detecting structural variants
 cd results
 
-sniffles -i ${BASENAME}.aligned.sorted.bam -v ${BASENAME}.vcf
+sniffles -i ${BASENAME}.aligned.sorted.bam -v ${BASENAME}_sniffles.vcf
 
 
 
